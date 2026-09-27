@@ -15,7 +15,7 @@ export const handler = async (event: any) => {
         : event.body;
 
     const userEmail = body?.email;
-    const selectedOption = body?.selectedOption;
+    const selectedOption = body?.role;
 
     if (!userEmail || !selectedOption) {
       return {
