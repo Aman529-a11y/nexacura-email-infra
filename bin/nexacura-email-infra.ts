@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import * as cdk from 'aws-cdk-lib/core';
-import { NexacuraEmailInfraStack } from '../lib/nexacura-email-infra-stack';
+import { NexacuraEmailInfraStack } from '../lib/nexacura-email-infra-stack.js';
 
 const app = new cdk.App();
 new NexacuraEmailInfraStack(app, 'NexacuraEmailInfraStack', {
