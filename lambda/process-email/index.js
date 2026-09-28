@@ -41,6 +41,12 @@ export const handler = async (event) => {
       const selectedOption = message.selectedOption;
       const toEmail = message.toEmail;
 
+      const submittedAt = new Date().toLocaleString("en-IN", {
+        timeZone: "Asia/Kolkata",
+        dateStyle: "medium",
+        timeStyle: "short",
+      });
+
       if (!logId || !userEmail || !selectedOption || !toEmail) {
         throw new Error("Invalid message data");
       }
@@ -165,6 +171,34 @@ export const handler = async (event) => {
                     </div>
                   </div>
 
+                  <!-- Date & Time -->
+                  <div style="
+                    background-color: #f9fafb;
+                    border: 1px solid #e5e7eb;
+                    border-radius: 8px;
+                    padding: 18px;
+                    margin-top: 14px;
+                  ">
+                    <div style="
+                      color: #6b7280;
+                      font-size: 12px;
+                      font-weight: 600;
+                      text-transform: uppercase;
+                      letter-spacing: 0.5px;
+                      margin-bottom: 7px;
+                    ">
+                      Submitted On
+                    </div>
+
+                    <div style="
+                      color: #111827;
+                      font-size: 16px;
+                      font-weight: 600;
+                    ">
+                      ${submittedAt}
+                    </div>
+                  </div>
+
                 </div>
 
                 <!-- Footer -->
@@ -200,6 +234,7 @@ NexaCura Clinic
 
 User Email: ${userEmail}
 Interested As: ${selectedOption}
+Submitted On: ${submittedAt}
 
 This email was generated automatically from the NexaCura Clinic early access form.
 `;
@@ -228,6 +263,7 @@ This email was generated automatically from the NexaCura Clinic early access for
               Data: textBody,
               Charset: "UTF-8",
             },
+
           },
         },
       });
@@ -296,6 +332,7 @@ This email was generated automatically from the NexaCura Clinic early access for
           );
         }
       }
+      throw error;
     }
   }
 

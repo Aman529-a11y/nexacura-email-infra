@@ -7,10 +7,6 @@ import * as dynamodb from "aws-cdk-lib/aws-dynamodb";
 import * as sqs from "aws-cdk-lib/aws-sqs";
 import * as lambdaEventSources from "aws-cdk-lib/aws-lambda-event-sources";
 
-import * as dotenv from "dotenv";
-
-dotenv.config();
-
 export class NexacuraEmailInfraStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
@@ -40,8 +36,8 @@ export class NexacuraEmailInfraStack extends cdk.Stack {
       code: lambda.Code.fromAsset("lambda/send-email"),
 
       environment: {
-        FROM_EMAIL: process.env.FROM_EMAIL || "",
-        TO_EMAIL: process.env.TO_EMAIL || "",
+        FROM_EMAIL: "praneetmaroo@nexacurahealthcare.com",
+        TO_EMAIL: "shivendra.singh@nexacurahealthcare.com",
       },
     });
 
@@ -75,7 +71,7 @@ export class NexacuraEmailInfraStack extends cdk.Stack {
         timeout: cdk.Duration.seconds(30),
 
         environment: {
-          FROM_EMAIL: process.env.FROM_EMAIL || "",
+          FROM_EMAIL: "praneetmaroo@nexacurahealthcare.com",
           EMAIL_LOGS_TABLE_NAME: emailLogsTable.tableName,
         },
       },

@@ -93,7 +93,6 @@ export const handler = async (event) => {
           id: { S: logId },
           userEmail: { S: userEmail },
           selectedOption: { S: selectedOption },
-          toEmail: { S: toEmail },
           status: { S: "PENDING" },
           createdAt: { S: createdAt },
         },
